@@ -1,0 +1,3 @@
+# Mode terminal/CLI: Python 3.10+; tidak ada library pihak ketiga.
+# Modul yang dipakai adalah bawaan Python, sehingga pip install tidak diperlukan.
+# GUI opsional memakai PyQt5>=5.15; lihat requirements_gui_upstream.txt.
