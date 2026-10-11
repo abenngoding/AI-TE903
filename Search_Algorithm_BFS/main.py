@@ -20,7 +20,14 @@ def main() -> None:
     nodes = sorted(demo_graph)
     parser.add_argument("--start", default="G", choices=nodes, help="Simpul awal")
     parser.add_argument("--goal", default="D", choices=nodes, help="Simpul tujuan")
+    parser.add_argument("--gui", action="store_true", help="Buka visualisasi BFS pada grid")
     args = parser.parse_args()
+
+    if args.gui:
+        from bfs_visualizer import launch_gui
+
+        launch_gui()
+        return
 
     print("Search Algorithm: Breadth-First Search (BFS)")
     print(f"Pencarian: {args.start} -> {args.goal}")

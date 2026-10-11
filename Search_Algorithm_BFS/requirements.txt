@@ -1,3 +1,4 @@
 # Python 3.10+
 # Tidak ada library pihak ketiga yang perlu diinstal.
 # collections, argparse, dan doctest merupakan modul bawaan Python.
+# GUI menggunakan tkinter bawaan instalasi Python Windows.

@@ -25,6 +25,7 @@ README berbahasa Indonesia ini ditambahkan untuk memudahkan penggunaannya.
 | File | Fungsi |
 | --- | --- |
 | `main.py` | Menjalankan demo dan menerima pilihan simpul |
+| `bfs_visualizer.py` | GUI grid dan animasi pencarian BFS |
 | `breadth_first_search_shortest_path_2.py` | Implementasi BFS asli beserta graf contoh |
 | `requirements.txt` | Keterangan dependensi program |
 | `readme.md` | Penjelasan dan cara penggunaan |
@@ -117,6 +118,48 @@ Fungsi `bfs_shortest_path` menghasilkan daftar simpul pada jalur, atau `[]`
 jika tidak ditemukan. Fungsi `bfs_shortest_path_distance` menghasilkan jumlah
 sisi, atau `-1` jika tidak ada jalur. Saat memakai fungsi secara langsung,
 pastikan simpul awal valid; peluncur `main.py` sudah memvalidasi pilihan simpul.
+
+### Visualisasi GUI
+
+Untuk membuka jendela visualisasi grid, jalankan dari folder utama repository:
+
+```powershell
+python Search_Algorithm_BFS/main.py --gui
+```
+
+Jika terminal berada di folder yang berisi `main.py`, gunakan `python main.py --gui`.
+GUI memakai **Tkinter**, yang sudah tersedia pada Python di komputer ini.
+Argumen `--start` dan `--goal` digunakan untuk demo terminal; pada GUI, pilih
+titik awal dan tujuan langsung dengan mengklik grid.
+
+1. Pilih ukuran grid dan kepadatan tembok, lalu klik **Buat Maze**.
+2. Pilih **Titik Awal**, **Tujuan**, **Tembok**, atau **Hapus Tembok**, kemudian
+   klik atau seret pada grid.
+3. Klik **Mulai BFS** untuk melihat pencarian secara bertahap.
+4. Gunakan **Hentikan** untuk menghentikan animasi, **Reset Pencarian** untuk
+   menghapus hasil pencarian, atau **Kosongkan Grid** untuk menghapus tembok.
+
+Hijau menandai titik awal, merah tujuan, hitam tembok, kuning simpul yang
+sudah diperiksa, ungu antrean, oranye simpul yang sedang diperiksa, dan biru
+jalur terpendek. Panel di sebelah kanan menampilkan jumlah simpul diperiksa,
+ukuran antrean, jumlah sisi pada jalur, dan waktu komputasi tanpa jeda animasi.
+
+Visualisasi ini menggunakan **BFS dengan gerakan empat arah dan biaya setiap
+sisi 1**. BFS tidak memerlukan heuristik. Maze acak tidak selalu memiliki jalur;
+jika pencarian gagal, hapus sebagian tembok atau buat maze baru.
+
+Implementasi grid dan GUI dibuat untuk paket pembelajaran ini. Kode BFS asli
+dari TheAlgorithms tetap digunakan oleh demo terminal.
+
+#### Screenshot GUI
+
+![Visualisasi BFS pada grid 20 x 20 dengan hasil jalur tidak ditemukan](../docs/images/bfs-gui.png)
+
+Screenshot ini memperlihatkan pencarian pada grid **20 × 20** dengan **70 tembok**.
+BFS telah memeriksa **106 simpul** dan antreannya sudah kosong. Status
+**Jalur tidak ditemukan** berarti tidak ada jalur yang menghubungkan titik awal
+dengan tujuan pada susunan tembok tersebut. Untuk mencoba susunan lain,
+hapus sebagian tembok atau klik **Buat Maze**.
 
 ### Hasil Run Berhasil
 
