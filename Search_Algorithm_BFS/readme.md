@@ -118,6 +118,17 @@ jika tidak ditemukan. Fungsi `bfs_shortest_path_distance` menghasilkan jumlah
 sisi, atau `-1` jika tidak ada jalur. Saat memakai fungsi secara langsung,
 pastikan simpul awal valid; peluncur `main.py` sudah memvalidasi pilihan simpul.
 
+### Hasil Run Berhasil
+
+Program berhasil dijalankan dengan exit code `0`. Pencarian dari simpul **G**
+ke **D** menghasilkan jalur terpendek **G → C → A → B → D**, dengan **4 sisi**.
+
+![Tampilan terminal hasil run BFS yang berhasil](../docs/images/bfs-terminal-success.png)
+
+Gambar tampilan terminal di atas dirender dari output asli program saat run berhasil.
+Perintah pada gambar dijalankan dari folder utama repository. Jika terminal
+berada di folder yang berisi `main.py`, gunakan `python main.py`.
+
 ## 4. Source / Referensi
 
 - **Repository:** [TheAlgorithms/Python](https://github.com/TheAlgorithms/Python).
