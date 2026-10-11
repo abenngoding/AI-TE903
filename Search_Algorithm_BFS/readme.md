@@ -120,10 +120,11 @@ pastikan simpul awal valid; peluncur `main.py` sudah memvalidasi pilihan simpul.
 
 ### Hasil Run Berhasil
 
-Program berhasil dijalankan dengan exit code `0`. Pencarian dari simpul **G**
+Program berhasil dijalankan menggunakan **Python 3.13.14** yang terpasang
+di komputer, dengan exit code `0`. Pencarian dari simpul **G**
 ke **D** menghasilkan jalur terpendek **G → C → A → B → D**, dengan **4 sisi**.
 
-![Tampilan terminal hasil run BFS yang berhasil](../docs/images/bfs-terminal-success.png)
+![Tampilan terminal Python 3.13.14 dan hasil run BFS yang berhasil](../docs/images/bfs-terminal-success.png)
 
 Gambar tampilan terminal di atas dirender dari output asli program saat run berhasil.
 Perintah pada gambar dijalankan dari folder utama repository. Jika terminal
