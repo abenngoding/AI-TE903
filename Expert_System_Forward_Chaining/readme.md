@@ -125,10 +125,114 @@ python -m pip install -e ".[gui]"
 animal-expert-gui
 ```
 
-Instalasi GUI memerlukan akses internet dan lingkungan desktop. Verifikasi
-paket ini mencakup CLI dan mesin inferensi; GUI belum diuji pada sesi ini.
+Instalasi GUI memerlukan akses internet dan lingkungan desktop.
 
-## 4. Source / Referensi
+### Screenshot hasil GUI
+
+Screenshot berikut diambil dari GUI PyQt5 asli setelah ciri **1, 6, 12, dan 13**
+dicentang dan tombol **Infer** dijalankan.
+
+![Hasil GUI: ciri 1, 6, 12, dan 13 dipilih, hasil leopard, serta jejak aturan R01, R05, dan R09](docs/images/hasil-running-gui.png)
+
+Panel kiri berisi pilihan ciri, sedangkan panel kanan menampilkan hasil
+**leopard / macan tutul** dan jejak inferensi: `R01` menghasilkan `mammal`,
+`R05` menghasilkan `carnivore`, lalu `R09` menghasilkan `leopard`.
+Tombol **Reset** menghapus pilihan ciri dan hasil inferensi.
+
+Verifikasi GUI mencakup pemilihan ciri tersebut, tombol **Infer**, hasil
+`leopard`, jejak aturan `R01`, `R05`, dan `R09`, serta tombol **Reset**.
+Screenshot diambil dengan rendering Qt tanpa menampilkan jendela di desktop;
+font Windows dimuat untuk memastikan teks terlihat. Verifikasi CLI dan mesin
+inferensi juga telah lulus melalui 11 unit test bawaan.
+
+## 4. Basis Pengetahuan
+
+Seluruh ciri, kategori, aturan, dan kemungkinan hewan berikut berasal dari
+[knowledge_base.json](src/animal_expert_system/data/knowledge_base.json).
+File `knowledge_base.py` membaca dan memvalidasi data tersebut.
+
+### 20 ciri yang dapat dipilih
+
+ID 1–20 digunakan sebagai fakta awal melalui argumen CLI atau checkbox GUI.
+
+| ID | Ciri di program | Arti |
+| --- | --- | --- |
+| 1 | `has hair` | Memiliki rambut |
+| 2 | `gives milk` | Menghasilkan susu |
+| 3 | `has feathers` | Memiliki bulu unggas |
+| 4 | `can fly` | Bisa terbang |
+| 5 | `lays eggs` | Bertelur |
+| 6 | `eats meat` | Makan daging |
+| 7 | `has pointed teeth` | Memiliki gigi runcing |
+| 8 | `has claws` | Memiliki cakar |
+| 9 | `has forward-facing eyes` | Memiliki mata menghadap ke depan |
+| 10 | `has hooves` | Memiliki kuku seperti kuda atau sapi |
+| 11 | `chews cud` | Memamah biak |
+| 12 | `has a tawny color` | Berwarna cokelat kekuningan |
+| 13 | `has dark spots` | Memiliki bintik gelap |
+| 14 | `has black stripes` | Memiliki garis belang hitam |
+| 15 | `has a long neck` | Memiliki leher panjang |
+| 16 | `has long legs` | Memiliki kaki panjang |
+| 17 | `cannot fly` | Tidak bisa terbang |
+| 18 | `is black and white` | Berwarna hitam dan putih |
+| 19 | `can swim` | Bisa berenang |
+| 20 | `is a strong flyer` | Memiliki kemampuan terbang yang kuat |
+
+### 4 kategori perantara
+
+Kategori berikut disimpulkan oleh mesin inferensi dan dapat menjadi syarat
+bagi aturan berikutnya. Kategori ini tidak dimasukkan sebagai fakta awal.
+
+| ID | Kategori | Arti |
+| --- | --- | --- |
+| 21 | `mammal` | Mamalia |
+| 22 | `bird` | Burung |
+| 23 | `carnivore` | Karnivora |
+| 24 | `ungulate` | Hewan berkuku (ungulate) |
+
+### 15 aturan IF–THEN
+
+Semua syarat yang dihubungkan dengan **dan** harus terpenuhi. Ketika
+kesimpulan suatu aturan belum diketahui, kesimpulan tersebut ditambahkan
+ke memori kerja dan dapat langsung dipakai oleh aturan berikutnya.
+
+| Aturan | IF — Syarat | THEN — Kesimpulan |
+| --- | --- | --- |
+| `R01` | Memiliki rambut | Mamalia |
+| `R02` | Menghasilkan susu | Mamalia |
+| `R03` | Memiliki bulu unggas | Burung |
+| `R04` | Bisa terbang **dan** Bertelur | Burung |
+| `R05` | Makan daging | Karnivora |
+| `R06` | Memiliki gigi runcing **dan** Memiliki cakar **dan** Memiliki mata menghadap ke depan | Karnivora |
+| `R07` | Memiliki kuku seperti kuda atau sapi **dan** Mamalia | Hewan berkuku (ungulate) |
+| `R08` | Memamah biak **dan** Mamalia | Hewan berkuku (ungulate) |
+| `R09` | Mamalia **dan** Karnivora **dan** Berwarna cokelat kekuningan **dan** Memiliki bintik gelap | Macan tutul |
+| `R10` | Mamalia **dan** Karnivora **dan** Berwarna cokelat kekuningan **dan** Memiliki garis belang hitam | Harimau |
+| `R11` | Hewan berkuku (ungulate) **dan** Memiliki leher panjang **dan** Memiliki kaki panjang **dan** Memiliki bintik gelap **dan** Menghasilkan susu | Jerapah |
+| `R12` | Hewan berkuku (ungulate) **dan** Memiliki garis belang hitam | Zebra |
+| `R13` | Burung **dan** Memiliki leher panjang **dan** Memiliki kaki panjang **dan** Tidak bisa terbang **dan** Berwarna hitam dan putih | Burung unta |
+| `R14` | Burung **dan** Bisa berenang **dan** Tidak bisa terbang **dan** Berwarna hitam dan putih | Penguin |
+| `R15` | Burung **dan** Memiliki kemampuan terbang yang kuat | Albatros |
+
+### 7 kemungkinan hewan
+
+Berikut hewan yang dapat menjadi hasil identifikasi sesuai aturan di atas.
+
+| ID | Nama keluaran program | Arti |
+| --- | --- | --- |
+| 25 | `leopard` | Macan tutul |
+| 26 | `tiger` | Harimau |
+| 27 | `giraffe` | Jerapah |
+| 28 | `zebra` | Zebra |
+| 29 | `ostrich` | Burung unta |
+| 30 | `penguin` | Penguin |
+| 31 | `albatross` | Albatros |
+
+Contoh: ciri **3, 17, 18, dan 19** menghasilkan `penguin`. Aturan `R03`
+menyimpulkan `bird`, lalu `R14` menggabungkannya dengan ciri tidak bisa
+terbang, berwarna hitam-putih, dan bisa berenang.
+
+## 5. Source / Referensi
 
 - Repositori: [Waldo0926/animal-expert-system](https://github.com/Waldo0926/animal-expert-system).
 - Penulis versi publik: **Shuoxun Wen**.
