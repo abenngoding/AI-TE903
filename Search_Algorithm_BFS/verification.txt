@@ -1,0 +1,56 @@
+VERIFIKASI SEARCH ALGORITHM BFS
+Python: 3.12.14
+Platform: linux
+
+PASS: python main.py
+Search Algorithm: Breadth-First Search (BFS)
+Pencarian: G -> D
+Jalur terpendek: G -> C -> A -> B -> D
+Jumlah sisi: 4
+
+PASS: python main.py --start A --goal F
+Search Algorithm: Breadth-First Search (BFS)
+Pencarian: A -> F
+Jalur terpendek: A -> C -> F
+Jumlah sisi: 2
+
+PASS: python -m doctest -v breadth_first_search_shortest_path_2.py
+Trying:
+    bfs_shortest_path(demo_graph, "G", "D")
+Expecting:
+    ['G', 'C', 'A', 'B', 'D']
+ok
+Trying:
+    bfs_shortest_path(demo_graph, "G", "G")
+Expecting:
+    ['G']
+ok
+Trying:
+    bfs_shortest_path(demo_graph, "G", "Unknown")
+Expecting:
+    []
+ok
+Trying:
+    bfs_shortest_path_distance(demo_graph, "G", "D")
+Expecting:
+    4
+ok
+Trying:
+    bfs_shortest_path_distance(demo_graph, "A", "A")
+Expecting:
+    0
+ok
+Trying:
+    bfs_shortest_path_distance(demo_graph, "A", "Unknown")
+Expecting:
+    -1
+ok
+1 items had no tests:
+    breadth_first_search_shortest_path_2
+2 items passed all tests:
+   3 tests in breadth_first_search_shortest_path_2.bfs_shortest_path
+   3 tests in breadth_first_search_shortest_path_2.bfs_shortest_path_distance
+6 tests in 3 items.
+6 passed and 0 failed.
+Test passed.
+

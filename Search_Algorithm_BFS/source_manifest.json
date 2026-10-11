@@ -1,0 +1,29 @@
+{
+  "repository": "https://github.com/TheAlgorithms/Python",
+  "commit": "b0be30443393b019c469684554a3c8748ffeacbe",
+  "source_files": [
+    {
+      "url": "https://raw.githubusercontent.com/TheAlgorithms/Python/b0be30443393b019c469684554a3c8748ffeacbe/graphs/breadth_first_search_shortest_path_2.py",
+      "relative": "breadth_first_search_shortest_path_2.py",
+      "upstream_path": "graphs/breadth_first_search_shortest_path_2.py",
+      "size_bytes": 3599,
+      "upstream_sha256": "a1d424e2be9a510f07066fa18065b7eeadb59788db1135c9f457b5129dfe6219",
+      "packaged_sha256": "a1d424e2be9a510f07066fa18065b7eeadb59788db1135c9f457b5129dfe6219",
+      "modified": false
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TheAlgorithms/Python/b0be30443393b019c469684554a3c8748ffeacbe/LICENSE.md",
+      "relative": "LICENSE.md",
+      "upstream_path": "LICENSE.md",
+      "size_bytes": 1095,
+      "upstream_sha256": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+      "packaged_sha256": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+      "modified": false
+    }
+  ],
+  "notes": [
+    "Algorithm source and original MIT license are unchanged.",
+    "main.py is an added command-line launcher.",
+    "Indonesian readme.md, requirements.txt and verification.txt are package additions."
+  ]
+}
