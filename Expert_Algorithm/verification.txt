@@ -1,0 +1,65 @@
+VERIFIKASI EXPERT SYSTEM FORWARD CHAINING
+Tanggal: 12 Oktober 2026 (Asia/Bangkok)
+Python: 3.12.14
+Platform: linux
+Mode: terminal/CLI dan mesin inferensi. GUI opsional belum diuji.
+
+PASS: Daftar ciri
+Command: python main.py --list-features --language en
+1: has hair
+ 2: gives milk
+ 3: has feathers
+ 4: can fly
+ 5: lays eggs
+ 6: eats meat
+ 7: has pointed teeth
+ 8: has claws
+ 9: has forward-facing eyes
+10: has hooves
+11: chews cud
+12: has a tawny color
+13: has dark spots
+14: has black stripes
+15: has a long neck
+16: has long legs
+17: cannot fly
+18: is black and white
+19: can swim
+20: is a strong flyer
+
+PASS: Identifikasi macan tutul
+Command: python main.py --features 1 6 12 13 --language en
+Initial facts:
+  - 1: has hair
+  - 6: eats meat
+  - 12: has a tawny color
+  - 13: has dark spots
+
+Inference trace:
+  R01: IF has hair THEN mammal
+  R05: IF eats meat THEN carnivore
+  R09: IF has a tawny color, has dark spots, mammal, carnivore THEN leopard
+
+Result:
+  -> leopard
+
+PASS: Unit test asli
+Command: python run_tests.py
+test_albatross (test_engine.ForwardChainingEngineTests.test_albatross) ... ok
+test_giraffe (test_engine.ForwardChainingEngineTests.test_giraffe) ... ok
+test_insufficient_facts_returns_no_animal (test_engine.ForwardChainingEngineTests.test_insufficient_facts_returns_no_animal) ... ok
+test_leopard_requires_multi_hop_reasoning (test_engine.ForwardChainingEngineTests.test_leopard_requires_multi_hop_reasoning) ... ok
+test_ostrich (test_engine.ForwardChainingEngineTests.test_ostrich) ... ok
+test_penguin (test_engine.ForwardChainingEngineTests.test_penguin) ... ok
+test_rejects_derived_fact_as_user_input (test_engine.ForwardChainingEngineTests.test_rejects_derived_fact_as_user_input) ... ok
+test_tiger (test_engine.ForwardChainingEngineTests.test_tiger) ... ok
+test_zebra (test_engine.ForwardChainingEngineTests.test_zebra) ... ok
+test_all_rule_references_are_valid (test_knowledge_base.KnowledgeBaseTests.test_all_rule_references_are_valid) ... ok
+test_expected_counts (test_knowledge_base.KnowledgeBaseTests.test_expected_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.004s
+
+OK
+
+Source asli diverifikasi menggunakan SHA-256; perubahan pyproject.toml dicatat dalam source_manifest.json.
