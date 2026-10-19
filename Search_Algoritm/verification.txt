@@ -1,0 +1,32 @@
+VERIFIKASI SEARCH ALGORITHM BFS
+Tanggal: 2026-10-19 (Asia/Bangkok)
+Python: 3.13.14
+Platform: Windows
+Folder: Search_Algoritm
+
+PASS: python -B main.py
+Search Algorithm: Breadth-First Search (BFS)
+Pencarian: G -> D
+Jalur terpendek: G -> C -> A -> B -> D
+Jumlah sisi: 4
+
+PASS: python -B main.py --start A --goal F
+Search Algorithm: Breadth-First Search (BFS)
+Pencarian: A -> F
+Jalur terpendek: A -> C -> F
+Jumlah sisi: 2
+
+PASS: python -B main.py --start G --goal G
+Search Algorithm: Breadth-First Search (BFS)
+Pencarian: G -> G
+Jalur terpendek: G
+Jumlah sisi: 0
+
+PASS: python -B -m doctest -v breadth_first_search_shortest_path_2.py
+6 tests passed, 0 failed.
+
+PASS: python -B -m unittest -v test_bfs_visualizer.py
+5 tests passed, including random mazes checked against a reference BFS.
+
+PASS: python -B -c "import tkinter, bfs_visualizer"
+GUI modules imported successfully. GUI interaction was not tested.
