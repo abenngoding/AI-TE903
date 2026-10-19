@@ -1,14 +1,3 @@
-"""
-Demo Multi-Agent System sederhana menggunakan Python standar.
-Tiga agen bekerja sama:
-1. ResearchAgent: mengumpulkan poin dari topik.
-2. AnalysisAgent: menyusun analisis sederhana.
-3. SummaryAgent: membuat ringkasan akhir.
-
-Jalankan: python main.py
-Tidak membutuhkan library tambahan.
-"""
-
 from dataclasses import dataclass
 from typing import List
 
